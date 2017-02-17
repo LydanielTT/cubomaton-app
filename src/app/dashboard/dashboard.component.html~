@@ -19,7 +19,7 @@
   <li *ngFor="let stone of stones" [class.selected]="stone === selectedStone" (click)="onSelect(stone)">
     <span class="badge">{{ stone.id }}</span>
     <span>{{ stone.name }}</span>
-    <span>{{ stone.updateAt }}</span>
+    <span class="queue">{{ stone.updateAt }}</span>
 <!--    <button class="delete" (click)="delete(hero); $event.stopPropagation()">X</button>-->
   </li>
 </ul>
