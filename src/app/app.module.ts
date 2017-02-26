@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MongodbService } from './mongodb.service';
+import { DetailStoneComponent } from './detail-stone/detail-stone.component';
+import { ListComponent } from './list/list.component';
 
 // Define the routes
 const ROUTES = [
@@ -19,13 +21,23 @@ const ROUTES = [
   {
     path: 'home',
     component: DashboardComponent
+  },
+  {
+    path: 'detail/:id',
+    component: DetailStoneComponent
+  },
+  {
+    path: 'homelist',
+    component: ListComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    DetailStoneComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
