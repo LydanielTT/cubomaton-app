@@ -1,14 +1,17 @@
+Détails
 <div *ngIf="stone">
   <h2>{{stone.name}} details!</h2>
   <div>
     <label>id: </label>{{stone.id}}
   </div>
+  <div>
+    <label>mise à jour: </label>{{stone.updateAt}}
+  </div>
 <!--  <div>-->
 <!--    <label>name: </label>-->
 <!--    <input [(ngModel)]="stone.name" placeholder="name"/>-->
-<!--    <!-- ngModel is used to interact directly when it is changed: 'two-way binding' -->-->
+    <!-- ngModel is used to interact directly when it is changed: 'two-way binding' -->
 <!--  </div>-->
   <button (click)="goBack()">Back</button>
 <!--  <button (click)="save()">Save</button>-->
 </div>
-      

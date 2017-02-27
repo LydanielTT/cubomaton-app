@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 
 @Component({
+  moduleId: module.id,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']

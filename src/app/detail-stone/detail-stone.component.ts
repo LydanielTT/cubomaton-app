@@ -7,6 +7,7 @@ import { MongodbService } from '../mongodb.service';
 import 'rxjs/add/operator/switchMap'; //to use Observable
 
 @Component({
+  moduleId: module.id,
   selector: 'app-detail-stone',
   templateUrl: './detail-stone.component.html',
   styleUrls: ['./detail-stone.component.css']

@@ -27,7 +27,7 @@ const ROUTES = [
     component: DetailStoneComponent
   },
   {
-    path: 'list',
+    path: 'homelist',
     component: ListComponent
   }
 ];

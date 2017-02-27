@@ -51,6 +51,20 @@ router.get('/posts', (req, res) => {
     
   });
 
-});
+})
 
+.get('/stones/:id', (req, res) => {
+  MongoClient.connect("mongodb://localhost:27017/tutoriel", function(error, db) {
+    if (error) return funcCallback(error);
+    console.log("Connecté à la base de données 'tutoriel/stones/:id'");
+    db.collection('stones').findOne({id:req.params.id}, function(err, document) {
+       if (err) throw err;
+       console.log(document);
+       res.setHeader('Content-Type', 'application/json');
+       res.status(200).send(JSON.stringify(document));
+    });
+    
+  });
+
+})
 module.exports = router;

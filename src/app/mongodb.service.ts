@@ -26,7 +26,7 @@ export class MongodbService {
     const url = `${this.stonesUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json())
+      .then(res => res.json())
       .catch(this.handleError); //catch server failures
   }
   

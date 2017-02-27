@@ -7,12 +7,14 @@ import { MongodbService } from '../mongodb.service';
 import 'rxjs/add/operator/switchMap'; //to use Observable
 
 @Component({
+  moduleId: module.id,
   selector: 'app-detail-stone',
   templateUrl: './detail-stone.component.html',
   styleUrls: ['./detail-stone.component.css']
 })
 export class DetailStoneComponent implements OnInit {
 
+  stones: any;
   constructor(
     private mongodbService: MongodbService,
     private route: ActivatedRoute,
@@ -22,7 +24,7 @@ export class DetailStoneComponent implements OnInit {
   ngOnInit(): void {
   this.route.params
     .switchMap((params: Params) => this.mongodbService.getStone(+params['id']))
-    .subscribe(stone => this.stone = stone);
+    .subscribe(stones => this.stones = stones);
   }
   
   goBack(): void {

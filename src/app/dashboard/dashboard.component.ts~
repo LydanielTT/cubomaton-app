@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
   
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/detail', this.selectedStone.id]);
   }
 
 }
