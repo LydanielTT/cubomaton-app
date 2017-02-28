@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { Stone } from '../stone';
 import { MongodbService } from '../mongodb.service';
 
 import 'rxjs/add/operator/switchMap'; //to use Observable
@@ -14,7 +15,7 @@ import 'rxjs/add/operator/switchMap'; //to use Observable
 })
 export class DetailStoneComponent implements OnInit {
 
-  stone: any;
+  stone: Stone;
   constructor(
     private mongodbService: MongodbService,
     private route: ActivatedRoute,
@@ -22,9 +23,9 @@ export class DetailStoneComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  this.route.params
-    .switchMap((params: Params) => this.mongodbService.getStone(+params['id']))
-    .subscribe(stone => this.stone = stone);
+//  this.route.params
+//    .switchMap((params: Params) => this.mongodbService.getStone(+params['id']))
+//    .subscribe(stone => this.stone = stone);
   }
   
   goBack(): void {

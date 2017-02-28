@@ -1,4 +1,10 @@
 <h1>
   {{title}}
 </h1>
+<nav>
+  <a routerLink="/home" routerLinkActive="active">Accueil</a>
+  <a routerLink="/homelist" routerLinkActive="active">Liste</a>
+</nav>
+
+<button class="addstone">+</button>
 <router-outlet></router-outlet>

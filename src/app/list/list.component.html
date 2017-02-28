@@ -1,20 +1,15 @@
-<<h2>Echantillons</h2>
+<h2>Echantillons</h2>
 <!--<div>-->
 <!--  <label>Hero name:</label> <input #heroName />-->
 <!--  <button (click)="add(heroName.value); heroName.value=''">Add</button>-->
 <!--</div>-->
-<ul class="heroes">
-  <li *ngFor="let stone of stones" [class.selected]="stone === selectedStone" (click)="onSelect(stone)">
-    <span class="badge">{{ stone.id }}</span>
-    <span>{{ stone.name }}</span>
-    <span class="queue">{{ stone.updateAt }}</span>
+<ul class="stones grid grid-pad">
+  <a *ngFor="let stone of stones" [routerLink]="['/detail', stone.id]" class="col-">
+    <div class="module stone">
+      <span class="badge">{{ stone.id }}</span>
+      <span>{{ stone.name }}</span>
+      <span class="queue">{{ stone.updateAt }}</span>
 <!--    <button class="delete" (click)="delete(hero); $event.stopPropagation()">X</button>-->
-  </li>
+    </div> 
+  </a>
 </ul>
-<!-- my-hero-detail [hero]="selectedHero"></my-hero-detail-->
-<div *ngIf="selectedStone">
-  <h2>
-    {{ selectedStone.name | uppercase }} est selectionné
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>

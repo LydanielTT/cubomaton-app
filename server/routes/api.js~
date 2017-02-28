@@ -7,6 +7,7 @@ var MongoClient = require("mongodb").MongoClient;
 
 const API = 'https://jsonplaceholder.typicode.com';
 
+const MONGODB_URI = "mongodb://localhost:27017/tutoriel";
 /* GET api listing. */ /*première partie pour que ça marche*/
 router.get('/', (req, res) => {
   res.send('api works');
@@ -26,7 +27,7 @@ router.get('/posts', (req, res) => {
 })
 
 .get('/mongodb', (req, res) => {
-  MongoClient.connect("mongodb://localhost:27017/tutoriel", function(error, db) {
+  MongoClient.connect(MONGODB_URI, function(error, db) {
     if (error) return funcCallback(error);
     console.log("Connecté à la base de données 'tutoriel/personnages'");
     db.collection('personnages').find({}).toArray(function(err, result) {
@@ -39,8 +40,12 @@ router.get('/posts', (req, res) => {
 
 })
 
+/*  "/api/stones"
+ *    GET: finds all stones
+ *    POST: creates a new stone
+ */
 .get('/stones', (req, res) => {
-  MongoClient.connect("mongodb://localhost:27017/tutoriel", function(error, db) {
+  MongoClient.connect(MONGODB_URI, function(error, db) {
     if (error) return funcCallback(error);
     console.log("Connecté à la base de données 'tutoriel/stones'");
     db.collection('stones').find({}).toArray(function(err, result) {
@@ -53,12 +58,23 @@ router.get('/posts', (req, res) => {
 
 })
 
+.post('/stones',(resq, res) => {
+
+
+
+})
+
+/*  "/api/stones/:id"
+ *    GET: find stone by id
+ *    PUT: update stone by id
+ *    DELETE: delete stone by id
+ */
 .get('/stones/:id', (req, res) => {
-  MongoClient.connect("mongodb://localhost:27017/tutoriel", function(error, db) {
+  var parametre = req.params.id;
+  MongoClient.connect(MONGODB_URI, function(error, db) {
     if (error) return funcCallback(error);
-    console.log("Connecté à la base de données 'tutoriel/stones/:id'");
-});
-    db.collection('stones').findOne({id:req.params.id}, function(err, document) {
+    console.log("Connecté à la base de données 'tutoriel/stones/:id' id: "+ req.params.id);
+    db.collection('stones').findOne({id:4}, function(err, document) {
        if (err) throw err;
        console.log(document);
        res.setHeader('Content-Type', 'application/json');
@@ -68,4 +84,12 @@ router.get('/posts', (req, res) => {
   });
 
 })
+
+.put('/stones/:id', (req, res) => {
+
+})
+
+.delete('/stones/:id', (req, res) => {
+
+});
 module.exports = router;

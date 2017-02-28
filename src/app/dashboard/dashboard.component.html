@@ -11,11 +11,11 @@
 <!--  </div>-->
 <!--</div>-->
 <h2>Echantillons</h2>
-<!--<div>-->
-<!--  <label>Hero name:</label> <input #heroName />-->
-<!--  <button (click)="add(heroName.value); heroName.value=''">Add</button>-->
-<!--</div>-->
-<ul class="heroes">
+<div>
+  <label>name:</label> <input #stoneName />
+  <button (click)="add(stoneName.value); stoneName.value=''" class="addstone">+</button>
+</div>
+<ul class="stones">
   <li *ngFor="let stone of stones" [class.selected]="stone === selectedStone" (click)="onSelect(stone)">
     <span class="badge">{{ stone.id }}</span>
     <span>{{ stone.name }}</span>

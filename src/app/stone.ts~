@@ -1,0 +1,5 @@
+export class Stone {
+  id: string;
+  name: string;
+  updateAt: date;
+}
