@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   // Retrieve acquisitions from the API
     this.mongodbService.getAllStones()
-//        .subscribe(stones => {this.stones = stones});
+        .subscribe(stones => {this.stones = stones});
   }
 
 }

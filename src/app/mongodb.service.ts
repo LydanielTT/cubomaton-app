@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 
 import { Stone } from './stone';
 
@@ -8,7 +8,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MongodbService {
-  
+
+  private headers = new Headers({'Content-Type': 'application/json'});
   private stonesUrl = '/api/stones';  // URL to web api
   
   constructor(private http: Http) { }
@@ -19,19 +20,19 @@ export class MongodbService {
       .map(res => res.json());
   }
   
-//  getAllStones() {
-//    return this.http.get(this.stonesUrl)
-//      .map(res => res.json());
-//  }
-//  
+  getAllStones() {
+    return this.http.get(this.stonesUrl)
+      .map(res => res.json());
+  }
+  
 
   //get("/api/stones")
-  getAllStones(): Promise<Stone[]> {
-    return this.http.get(this.stonesUrl)
-               .toPromise()
-               .then(response => response.json() as Stone[])
-               .catch(this.handleError);
-  }
+//  getAllStones(): Promise<Stone[]> {
+//    return this.http.get(this.stonesUrl)
+//               .toPromise()
+//               .then(response => response.json() as Stone[])
+//               .catch(this.handleError);
+//  }
   
   getStone(id: number): Promise<Stone> {
     const url = `${this.stonesUrl}/${id}`;
@@ -50,13 +51,14 @@ export class MongodbService {
 //      .catch(this.handleError);
 //  }
 
-//  create(name: string): Promise<Stone> {
-//    return this.http
-//      .post(this.stonesUrl, JSON.stringify({name: name}), {headers: this.headers})
-//      .toPromise()
-//      .then(res => res.json().data)
-//      .catch(this.handleError);
-//  }
+  // post("/api/stones")
+  create(newStone: Stone): Promise<Stone> {
+    return this.http.post(this.stonesUrl, newStone)
+      .toPromise()
+      .then(res => res.json() as Stone)
+      .catch(this.handleError);
+      //.post(this.stonesUrl, JSON.stringify({name: name, id: 5, updateAt: '30/02/2017'}), {headers: this.headers})
+  }
 
 //  update(hero: Hero): Promise<Hero> {
 //    const url = `${this.heroesUrl}/${hero.id}`;
@@ -68,7 +70,7 @@ export class MongodbService {
 //  }
 
 
-  private handleError(error: any): Promise<any> {
+  private handleError(error: any): Promise<Stone> {
     console.log('error');
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

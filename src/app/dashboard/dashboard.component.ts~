@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MongodbService } from '../mongodb.service';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Stone } from '../stone';
 
@@ -17,9 +17,17 @@ export class DashboardComponent implements OnInit {
 //  selectedStone: any;
 
   stones: Stone[];
-  
   selectedStone: Stone;
-  constructor(private router: Router, private mongodbService: MongodbService) { }
+  newstone : Stone = {
+   name:'',
+   id:null,
+   updateAt:new Date('12/12/2017')};
+  
+  constructor(private router: Router, 
+  private mongodbService: MongodbService) { }
+  
+  @Input()
+  stone: Stone;
   
   onSelect(stone: Stone): void {
     this.selectedStone = stone;
@@ -28,18 +36,22 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   // Retrieve acquisitions from the API
     this.mongodbService.getAllStones()
-//        .subscribe(stones => {this.stones = stones;});
+        .subscribe(stones => {this.stones = stones});
   }
   
-//  add(name: string): void {
+  add(stone: Stone) {
 //    name = name.trim();
-//    if (!name) { return; }
-//    this.mongodbService.create(name)
-//        .then(hero => {
-//          this.stones.push(stone);
-//          this.selectedStone = null;
-//        });
-//  }
+//    if (!name) { 
+//      return ; 
+//    }
+    console.log(stone.name);
+    this.mongodbService.create(stone)
+        .then(stone => {
+          this.stones.push(stone);
+          this.selectedStone = null;
+          console.log("here");
+        })
+  }
 
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedStone.id]);

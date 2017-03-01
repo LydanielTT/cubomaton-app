@@ -50,6 +50,7 @@ router.get('/posts', (req, res) => {
     console.log("Connecté à la base de données 'tutoriel/stones'");
     db.collection('stones').find({}).toArray(function(err, result) {
        if (err) throw err;
+       console.log(result);
        res.setHeader('Content-Type', 'application/json');
        res.status(200).send(JSON.stringify(result));
     });
@@ -58,10 +59,25 @@ router.get('/posts', (req, res) => {
 
 })
 
-.post('/stones',(resq, res) => {
+.post('/stones',(req, res) => {
 
+var newStone = req.body;
+  newStone.createDate = new Date();
 
-
+//  if (!req.body.name) {
+//    handleError(res, "Invalid user input", "Must provide a name.", 400);
+//  }
+  MongoClient.connect(MONGODB_URI, function(error, db) {
+    if (error) return funcCallback(error);
+    console.log("Connecté à la base de données 'tutoriel/stones/:id' id: "+ req.params.id);
+    db.collection('stones').insertOne(newStone, function(err, doc) {
+         if (err) {
+          handleError(res, err.message, "Failed to create new stone.");
+        } else {
+          res.status(201).json(doc.ops[0]);
+        }
+      });
+  })
 })
 
 /*  "/api/stones/:id"

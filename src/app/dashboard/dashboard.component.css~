@@ -3,13 +3,13 @@
   background-color: #CFD8DC !important;
   color: white;
 }
-.heroes {
+.stones {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 20em;
 }
-.heroes li {
+.stones li {
   cursor: pointer;
   position: relative;
   left: 0;
@@ -19,20 +19,20 @@
   height: 1.6em;
   border-radius: 4px;
 }
-.heroes li.selected:hover {
+.stones li.selected:hover {
   background-color: #BBD8DC !important;
   color: white;
 }
-.heroes li:hover {
+.stones li:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
-.heroes .text {
+.stones .text {
   position: relative;
   top: -3px;
 }
-.heroes .badge {
+.stones .badge {
   display: inline-block;
   font-size: small;
   color: white;
@@ -47,7 +47,7 @@
   border-radius: 4px 0 0 4px;
 }
 
-.heroes .queue {
+.stones .queue {
   display: inline-block;
   font-size: small;
   color: white;

@@ -1,5 +1,5 @@
 export class Stone {
-  id: string;
+  id: number;
   name: string;
   updateAt: date;
 }

@@ -23,9 +23,9 @@ export class DetailStoneComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-//  this.route.params
-//    .switchMap((params: Params) => this.mongodbService.getStone(+params['id']))
-//    .subscribe(stone => this.stone = stone);
+  this.route.params
+    .switchMap((params: Params) => this.mongodbService.getStone(+params['id']))
+    .subscribe(stone => this.stone = stone);
   }
   
   goBack(): void {

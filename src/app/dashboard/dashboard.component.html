@@ -11,10 +11,24 @@
 <!--  </div>-->
 <!--</div>-->
 <h2>Echantillons</h2>
-<div>
-  <label>name:</label> <input #stoneName />
-  <button (click)="add(stoneName.value); stoneName.value=''" class="addstone">+</button>
-</div>
+<!--<div>-->
+<!--  <label>name:</label> <input #stoneName />-->
+<!--  <button (click)="add(stoneName.value); stoneName.value=''" class="addstone">+</button>-->
+<!--</div>-->
+<form>
+  <div>
+    <label>name:</label> <input name="stone-name" [(ngModel)]="newstone.name" placeholder="Name"/>
+  </div>
+  <div>
+    <label>id:</label> <input name="stone-id" [(ngModel)]="newstone.id" placeholder="id"/>
+  </div>
+  <div>
+    <label>update at:</label> <input type=Date name="stone-updateAt" [(ngModel)]="newstone.updateAt"/>
+  </div>
+  <div>
+    <button (click)="add(newstone)" class="addstone">+</button>
+  </div>
+</form>
 <ul class="stones">
   <li *ngFor="let stone of stones" [class.selected]="stone === selectedStone" (click)="onSelect(stone)">
     <span class="badge">{{ stone.id }}</span>
