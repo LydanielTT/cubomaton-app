@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.get('/callpython', (req, res) => {
 console.log("callpython:")
   
-  var process = spawn('python',['./server/routes/test.py']);
+  var process = spawn('python',['motor_and_camera.py']);
 //  var process = spawn('python',["path/to/script.py", arg1, arg2, ...]);
   
   var dataString ='';
