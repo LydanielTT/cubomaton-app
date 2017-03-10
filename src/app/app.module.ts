@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MongodbService } from './mongodb.service';
+import { PythonService } from './python.service';
 import { DetailStoneComponent } from './detail-stone/detail-stone.component';
 import { ListComponent } from './list/list.component';
 
@@ -45,7 +46,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [MongodbService],
+  providers: [MongodbService, PythonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,7 +28,7 @@ router.get('/posts', (req, res) => {
 
 .get('/mongodb', (req, res) => {
   MongoClient.connect(MONGODB_URI, function(error, db) {
-    if (error) return funcCallback(error);
+     if (error) throw error;
     console.log("Connecté à la base de données 'tutoriel/personnages'");
     db.collection('personnages').find({}).toArray(function(err, result) {
        if (err) throw err;
@@ -46,7 +46,7 @@ router.get('/posts', (req, res) => {
  */
 .get('/stones', (req, res) => {
   MongoClient.connect(MONGODB_URI, function(error, db) {
-    if (error) return funcCallback(error);
+     if (error) throw error;
     console.log("Connecté à la base de données 'tutoriel/stones'");
     db.collection('stones').find({}).toArray(function(err, result) {
        if (err) throw err;
@@ -68,7 +68,7 @@ var newStone = req.body;
 //    handleError(res, "Invalid user input", "Must provide a name.", 400);
 //  }
   MongoClient.connect(MONGODB_URI, function(error, db) {
-    if (error) return funcCallback(error);
+    if (error) throw error;
     console.log("Connecté à la base de données 'tutoriel/stones/:id' id: "+ req.params.id);
     db.collection('stones').insertOne(newStone, function(err, doc) {
          if (err) {
@@ -88,7 +88,7 @@ var newStone = req.body;
 .get('/stones/:id', (req, res) => {
   var parametre = parseInt(req.params.id);
   MongoClient.connect(MONGODB_URI, function(error, db) {
-    if (error) return funcCallback(error);
+     if (error) throw error;
     console.log("Connecté à la base de données 'tutoriel/stones/:id' id: "+ req.params.id);
     db.collection('stones').findOne({id:parametre}, function(err, document) {
        if (err) throw err;
